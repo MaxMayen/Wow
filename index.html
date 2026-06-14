@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibe Design</title>
     <style>
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            overflow: hidden;
+            
+            overflow-x: hidden; 
+            overflow-y: auto;
             font-family: 'Arial Black', sans-serif;
             background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+           
+            min-height: 100vh; 
+            padding: 20px;
             transition: background-color 0.2s;
         }
-                                
-                     <!---Neither I nor anyone else knows how this works---->
-
+                                        
         .container {
             position: relative;
             z-index: 10;
@@ -29,12 +36,40 @@
             text-align: center;
             cursor: pointer;
             user-select: none;
+           
+            width: 100%;
+            max-width: 450px; 
+            transition: transform 0.1s, box-shadow 0.1s;
         }
 
         .container:active {
             transform: translate(10px, 10px);
-            box-shadow: 5px 5px 0px #000;
+            
+            box-shadow: 10px 10px 0px #ff0055; 
         }
+
+                                                                  /* --- Neither I nor anyone else knows how this works --- */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                box-shadow: 12px 12px 0px #ff0055;
+            }
+
+            .container:active {
+                transform: translate(6px, 6px);
+                box-shadow: 6px 6px 0px #ff0055;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        VIBE DESIGN
+    </div>
+
+</body>
+</html>        }
 
         h1 {
             margin: 0;
