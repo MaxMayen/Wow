@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibe Design</title>
     <style>
-        
+       
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            
             overflow-x: hidden; 
             overflow-y: auto;
             font-family: 'Arial Black', sans-serif;
@@ -20,12 +19,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-           
             min-height: 100vh; 
             padding: 20px;
             transition: background-color 0.2s;
         }
                                         
+       
         .container {
             position: relative;
             z-index: 10;
@@ -36,7 +35,6 @@
             text-align: center;
             cursor: pointer;
             user-select: none;
-           
             width: 100%;
             max-width: 450px; 
             transition: transform 0.1s, box-shadow 0.1s;
@@ -44,33 +42,10 @@
 
         .container:active {
             transform: translate(10px, 10px);
-            
             box-shadow: 10px 10px 0px #ff0055; 
         }
 
-                                                                  /* --- Neither I nor anyone else knows how this works --- */
-        @media (max-width: 480px) {
-            .container {
-                padding: 30px 20px;
-                box-shadow: 12px 12px 0px #ff0055;
-            }
-
-            .container:active {
-                transform: translate(6px, 6px);
-                box-shadow: 6px 6px 0px #ff0055;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        VIBE DESIGN
-    </div>
-
-</body>
-</html>        }
-
+       
         h1 {
             margin: 0;
             font-size: 4rem;
@@ -80,12 +55,40 @@
         }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: #000;
             color: #fff;
             display: inline-block;
             padding: 5px 15px;
-            margin-top: 10px;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+       
+                                                          /* --- Neither I nor anyone else knows how this works --- */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                box-shadow: 12px 12px 0px #ff0055;
+            }
+
+            .container:active {
+                transform: translate(6px, 6px);
+                box-shadow: 6px 6px 0px #ff0055;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: -1px;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -97,6 +100,7 @@
     </div>
 
     <script>
+       
         document.addEventListener('mousemove', (e) => {
             const r = Math.round((e.clientX / window.innerWidth) * 255);
             const g = Math.round((e.clientY / window.innerHeight) * 255);
@@ -105,8 +109,12 @@
         });
 
         function cambiarColor() {
-            const randomColor = Math.floor(Math.random()*16777215).toString(16);
-            document.querySelector('.container').style.boxShadow = `20px 20px 0px #${randomColor}`;
+            const randomColor = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+
+            const esMovil = window.innerWidth <= 480;
+            const tamanoSombra = esMovil ? '12px' : '20px';
+            
+            document.querySelector('.container').style.boxShadow = `${tamanoSombra} ${tamanoSombra} 0px #${randomColor}`;
         }
     </script>
 
